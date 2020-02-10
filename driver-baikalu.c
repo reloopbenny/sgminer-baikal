@@ -670,6 +670,7 @@ static bool baikal_send_work(struct cgpu_info *baikal, int miner_id)
     case ALGO_NIST:
     case ALGO_BLAKE:
     case ALGO_VELTOR:
+    case ALGO_SCRYPT:
     default:
         memcpy(&msg.data[10], work->data, 80);
         msg.len = 90;
@@ -790,6 +791,7 @@ static int64_t baikal_hash_done(struct cgpu_info *baikal, struct miner_info *min
     case ALGO_NIST:
     case ALGO_MYRIAD_GROESTL:
     case ALGO_GROESTL:
+    case ALGO_SCRYPT:
 		hash_done *= 120;
 		//if (thecounter > 500) {  // Added for debug 26.03.18
 			//applog(LOG_ERR, "Case X11/QUARK/QUBIT/NIST/MYRIAD_STROESTL/GROESTL: Miner Clock: %lld, ASICs: %lld, calculated to: %lld.", (int64_t)miner->clock, (int64_t)miner->asic_count, hash_done); // Added for debug 26.03.18
